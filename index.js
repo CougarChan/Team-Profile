@@ -72,7 +72,7 @@ function addingEngineer() {
     })
 };
 
-// create array of questions for adding manager
+
 function addingManager() {
     inquirer
     .prompt([
@@ -104,3 +104,41 @@ function addingManager() {
     console.log('Manager added!!');
 })
 };
+
+
+
+
+
+function addingIntern() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'InternName',
+            message: "What is the intern's name?"
+        },
+        {
+            type: 'input',
+            name: 'InternID',
+            message: "What is the intern's id?"
+        },
+        {
+            type: 'input',
+            name: 'InternEmail',
+            message: "What is the intern's email address?"
+        },
+        {
+            type: 'input',
+            name: 'InternsSchool',
+            message: "What school does the intern attend?"
+        }
+    ])
+    .then(answers => {
+        const newIntern = new Intern(
+            answers.InternName, answers.InternID, answers.InternEmail, answers.InternSchool
+        )
+        console.log('Intern added!!')
+    })
+};
+
+MakingTeam();
