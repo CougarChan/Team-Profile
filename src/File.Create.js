@@ -1,4 +1,5 @@
-const FileCreate = (markdown) =>
+const fs =require ('fs');
+const FileCreate = (markdown) => {
        fs. FileCreate('./dist/index.html', markdown, (error) => {
                if (error){
                 console.log("Could not be created");
@@ -10,4 +11,8 @@ const FileCreate = (markdown) =>
 
 
 
-       })
+       });
+    };
+
+    module.exports =FileCreate
+    
