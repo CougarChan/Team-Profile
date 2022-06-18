@@ -1,6 +1,6 @@
 const inquirer =require ('inquirer');
 const fs =require ('fs');
-
+const WriteFile = require('./src/GeneratedHtml')
 
 const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
@@ -15,7 +15,7 @@ function MakingTeam() {
     {   type:'list',
         message: 'Which employee will you be hiring?',
         name: "EmployeePrompt",
-        choices: ["Engineer", "Manager", "Intern",]
+        choices: ["Engineer", "Manager", "Intern","Finished"]
     }
 
 ]).then(function(userInput) {
@@ -29,6 +29,13 @@ function MakingTeam() {
 
        else if (userInput.EmployeePrompt) {
             addingIntern();
+        }
+
+        else if (userInput.choices === 'Finished'){
+
+            let html = renderPage(html)
+            console.log('Thank you!');
+            WriteFile(html);
         }
 
         })
@@ -140,18 +147,4 @@ function addingIntern() {
 
 
 
-const FileCreate = (markdown) => {
-       fs. FileCreate('./dist/index.html', markdown, (error) => {
-               if (error){
-                console.log("Could not be created");
-               }
-               else{
-                     console.log("Team Profile has been created THANKS!");
-
-               }
-
-
-
-       })
-    };
 MakingTeam();
