@@ -1,5 +1,4 @@
 const inquirer =require ('inquirer');
-const FileCreate =require ('./src/File.Create');
 const fs =require ('fs');
 
 
@@ -16,27 +15,25 @@ function MakingTeam() {
     {   type:'list',
         message: 'Which employee will you be hiring?',
         name: "EmployeePrompt",
-        choices: ["Engineer", "Manager", "Intern"]
+        choices: ["Engineer", "Manager", "Intern",]
     }
-    ]).then(function(userInput) {
-        switch(userInput.addingEmployeePrompt) {
-            case "Engineer": addingEngineer();
-            break;
 
-            case "Manager": addingManager();
-            break;
-
-            case "Intern": addingIntern();
-            break;
-
-
- 
-         // Making the html
-             
-            default:
-                htmlBuilder();
+]).then(function(userInput) {
+          if (userInput.EmployeePrompt) {
+            addingEngineer();
         }
-    });
+
+         else if (userInput.EmployeePrompt) {
+            addingManager();
+        }
+
+       else if (userInput.EmployeePrompt) {
+            addingIntern();
+        }
+
+        })
+        
+
 };
 
 function addingEngineer() {
@@ -141,4 +138,20 @@ function addingIntern() {
     })
 };
 
+
+
+const FileCreate = (markdown) => {
+       fs. FileCreate('./dist/index.html', markdown, (error) => {
+               if (error){
+                console.log("Could not be created");
+               }
+               else{
+                     console.log("Team Profile has been created THANKS!");
+
+               }
+
+
+
+       })
+    };
 MakingTeam();
